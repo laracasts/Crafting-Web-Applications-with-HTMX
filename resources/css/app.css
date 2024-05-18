@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-Thin.ttf");
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-ExtraLight.ttf");
+        font-weight: 200;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-Light.ttf");
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-Regular.ttf");
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-Medium.ttf");
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-SemiBold.ttf");
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-Bold.ttf");
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-ExtraBold.ttf");
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-Black.ttf");
+        font-weight: 900;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-ThinItalic.ttf");
+        font-weight: 100;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-ExtraLightItalic.ttf");
+        font-weight: 200;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-LightItalic.ttf");
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-Italic.ttf");
+        font-weight: 400;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-MediumItalic.ttf");
+        font-weight: 500;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-SemiBoldItalic.ttf");
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-BoldItalic.ttf");
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-ExtraBoldItalic.ttf");
+        font-weight: 800;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "hk-grotesk";
+        src: url("../fonts/Hanken_Grotesk/HankenGrotesk-BlackItalic.ttf");
+        font-weight: 900;
+        font-style: italic;
+    }
+
+    /*  Kanit  */
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-Thin.ttf");
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-ExtraLight.ttf");
+        font-weight: 200;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-Light.ttf");
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-Regular.ttf");
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-Medium.ttf");
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-SemiBold.ttf");
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-Bold.ttf");
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-ExtraBold.ttf");
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-Black.ttf");
+        font-weight: 900;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-ThinItalic.ttf");
+        font-weight: 100;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-ExtraLightItalic.ttf");
+        font-weight: 200;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-LightItalic.ttf");
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-Italic.ttf");
+        font-weight: 400;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-MediumItalic.ttf");
+        font-weight: 500;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-SemiBoldItalic.ttf");
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-BoldItalic.ttf");
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-ExtraBoldItalic.ttf");
+        font-weight: 800;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "kanit";
+        src: url("../fonts/Kanit/Kanit-BlackItalic.ttf");
+        font-weight: 900;
+        font-style: italic;
+    }
+
+    body {
+        @apply selection:bg-primary-lowlight
+    }
+}
+
+input[type="checkbox"]:checked {
+    background-image: url('data:image/svg+xml,<svg width="12" height="12" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="8" height="8" fill="%231544EF"/></svg>');
+}
+
+input[type="radio"]:checked {
+    background-image: url('data:image/svg+xml,<svg width="12" height="12" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="3.5" fill="%231544EF"/></svg>');
+}

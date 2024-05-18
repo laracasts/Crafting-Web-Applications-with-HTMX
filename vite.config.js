@@ -8,4 +8,9 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: [
+            { find: '@assets', replacement: '/resources/assets' }
+        ]
+    },
 });

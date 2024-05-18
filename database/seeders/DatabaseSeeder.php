@@ -19,5 +19,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        $vendors = \App\Models\Vendor::factory(20)->create();
+
+        \App\Models\Invoice::factory(1000)
+            ->recycle($vendors)
+            ->create();
     }
 }
