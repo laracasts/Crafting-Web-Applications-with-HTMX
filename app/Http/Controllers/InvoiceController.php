@@ -17,22 +17,9 @@ class InvoiceController extends Controller
             ->orderBy('date_due', 'asc')
             ->get();
 
-        $approvedStats = Invoice::where('status', InvoiceStatus::Approved)
-            ->selectRaw('COUNT(*) as count, SUM(amount_due) as total')
-            ->first();
-
-        $openStats = [
-            'count' => $openInvoices->count(),
-            'total' => $openInvoices->reduce(function ($carry, $item) {
-                return $carry + $item->amount_due;
-            }, 0)
-        ];
-
         return view('invoices.list', [
             'heading' => 'Open Invoices',
             'invoices' => $openInvoices, 
-            'openStats' => $openStats, 
-            'approvedStats' => $approvedStats
         ]);
     }
 
@@ -60,22 +47,9 @@ class InvoiceController extends Controller
             ->orderBy('date_due', 'asc')
             ->get();
 
-        $openStats = Invoice::where('status', InvoiceStatus::Open)
-            ->selectRaw('COUNT(*) as count, SUM(amount_due) as total')
-            ->first();
-
-        $approvedStats = [
-            'count' => $approvedInvoices->count(),
-            'total' => $approvedInvoices->reduce(function ($carry, $item) {
-                return $carry + $item->amount_due;
-            }, 0)
-        ];
-
         return view('invoices.list', [
             'heading' => 'Approved Invoices',
             'invoices' => $approvedInvoices, 
-            'openStats' => $openStats, 
-            'approvedStats' => $approvedStats
         ]);
     }
 
