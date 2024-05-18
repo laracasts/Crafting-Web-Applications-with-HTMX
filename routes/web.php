@@ -9,4 +9,5 @@ Route::get('/', function () {
 
 Route::get('/invoices/open', [InvoiceController::class, 'showOpenInvoices']);
 Route::post('/invoices/open', [InvoiceController::class, 'approveOpenInvoices']);
-
+Route::get('/invoices/approved', [InvoiceController::class, 'showApprovedInvoices']);
+Route::post('/invoices/approved', [InvoiceController::class, 'payApprovedInvoices']);
