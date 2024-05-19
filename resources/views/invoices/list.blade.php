@@ -1,5 +1,5 @@
 <x-layout>
-    <x-section>
+    <x-section id="snapshots">
         <div class="grid items-start md:grid-cols-2 gap-3">
             <x-snapshot>
                 <h2 class="font-title font-semibold uppercase pb-3">
@@ -25,7 +25,7 @@
             </x-snapshot>
         </div>
     </x-section>
-    <x-section :$heading>
+    <x-section id="invoice-list" :$heading>
         <form method="POST" action="">
             @csrf
             <div>
