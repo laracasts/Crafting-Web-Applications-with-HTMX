@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Facades\View::composer('invoices.list', function(View $view) {
+        Facades\View::composer('invoices.index', function(View $view) {
             $openStats = Invoice::where('status', InvoiceStatus::Open)
                 ->selectRaw('COUNT(*) as count, SUM(amount_due) as total')
                 ->first();

@@ -10,6 +10,10 @@ use Ramsey\Uuid\Type\Decimal;
 
 class InvoiceController extends Controller
 {
+    public function index() {
+        return view('invoices.index');
+    }
+
     public function showOpenInvoices() {
 
         $openInvoices = Invoice::where('status', InvoiceStatus::Open)

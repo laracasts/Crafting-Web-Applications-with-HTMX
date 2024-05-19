@@ -7,6 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/invoices', [InvoiceController::class, 'index']);
 Route::get('/invoices/open', [InvoiceController::class, 'showOpenInvoices']);
 Route::post('/invoices/open', [InvoiceController::class, 'approveOpenInvoices']);
 Route::get('/invoices/approved', [InvoiceController::class, 'showApprovedInvoices']);
