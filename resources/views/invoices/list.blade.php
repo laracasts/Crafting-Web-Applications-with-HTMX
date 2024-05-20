@@ -33,7 +33,7 @@
                         @foreach ($invoices as $invoice)
                         <tr class="text-left py-3 px-4 *:py-3 *:px-2 has-[td]:hover:bg-gray-700 duration-300">
                             <td>
-                                <input type="checkbox" name="open:{{ $invoice->id }}">
+                                <input type="checkbox" name="invoice:{{ $invoice->id }}">
                             </td>
                             <td>
                                 {{ $invoice->vendor->name }}

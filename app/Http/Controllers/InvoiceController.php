@@ -14,63 +14,48 @@ class InvoiceController extends Controller
         return view('invoices.index');
     }
 
-    public function showOpenInvoices() {
-
-        $openInvoices = Invoice::where('status', InvoiceStatus::Open)
-            ->orderBy('vendor_id')
-            ->orderBy('date_due', 'asc')
-            ->get();
-
-        return view('invoices.list', [
-            'heading' => 'Open Invoices',
-            'invoices' => $openInvoices, 
-        ]);
-    }
-
     public function approveOpenInvoices(Request $request) {
-        $all = $request->all();
-
-        $ids = [];
-
-        foreach ($all as $key => $value) {
-            if (Str::startsWith($key, 'open')) {
-                $ids[] = Str::substr($key, 5);
-            }
-        }
-
-        Invoice::whereIn('id', $ids)
-            ->update(['status' => InvoiceStatus::Approved]);
-
-        return redirect('/invoices/open');
-    }
-
-    public function showApprovedInvoices() {
-
-        $approvedInvoices = Invoice::where('status', InvoiceStatus::Approved)
-            ->orderBy('vendor_id')
-            ->orderBy('date_due', 'asc')
-            ->get();
-
-        return view('invoices.list', [
-            'heading' => 'Approved Invoices',
-            'invoices' => $approvedInvoices, 
-        ]);
+        return $this->setInvoicesStatus($request, InvoiceStatus::Approved);
     }
 
     public function payApprovedInvoices(Request $request) {
+        return $this->setInvoicesStatus($request, InvoiceStatus::Paid);
+    }
+
+    public function showApprovedInvoices() {
+        return $this->showInvoicesByStatus(InvoiceStatus::Approved, 'Approved Invoices');
+    }
+
+    public function showOpenInvoices() {
+        return $this->showInvoicesByStatus(InvoiceStatus::Open, 'Open Invoices');
+    }
+
+    public function setInvoicesStatus(Request $request, InvoiceStatus $newStatus) {
         $all = $request->all();
 
         $ids = [];
 
         foreach ($all as $key => $value) {
-            if (Str::startsWith($key, 'open')) {
-                $ids[] = Str::substr($key, 5);
+            if (Str::startsWith($key, 'invoice')) {
+                $ids[] = Str::substr($key, 8);
             }
         }
 
         Invoice::whereIn('id', $ids)
-            ->update(['status' => InvoiceStatus::Paid]);
+            ->update(['status' => $newStatus]);
 
-        return redirect('/invoices/open');
+        return redirect()->back();
+    }
+
+    public function showInvoicesByStatus(InvoiceStatus $status, string $heading) {
+        $invoices = Invoice::where('status', $status)
+            ->orderBy('vendor_id')
+            ->orderBy('date_due', 'asc')
+            ->get();
+
+        return view('invoices.list', [
+            'heading' => $heading,
+            'invoices' => $invoices, 
+        ]);
     }
 }
