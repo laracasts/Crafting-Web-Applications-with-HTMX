@@ -65,6 +65,6 @@ class InvoiceController extends Controller
             'heading' => $heading,
             'invoices' => $invoices,
             'postUrl' => $postUrl,
-        ]);
+        ])->fragmentIf(request()->hasHeader('HX-Request'), 'invoice-list');
     }
 }

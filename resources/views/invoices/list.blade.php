@@ -1,4 +1,5 @@
 <x-layout>
+    @fragment('invoice-list')
     <x-section id="invoice-list" :$heading>
         <form method="POST" action="{{ $postUrl }}">
             @csrf
@@ -58,6 +59,7 @@
             </div>
         </form>
     </x-section>
+    @endfragment
 </x-layout>
 
 
