@@ -1,10 +1,17 @@
 <x-layout>
     @fragment('invoice-list')
-    <x-section id="invoice-list" :$heading>
-        <form method="POST" action="{{ $postUrl }}">
+    <x-section id="invoice-list" :$heading 
+        hx-post="{{ $postUrl }}"
+        hx-include="form#invoice-form input"
+        hx-trigger="click from:button#submit-button"
+        hx-target="#invoice-list"
+        hx-swap="outerHTML"
+    >
+        <form id="invoice-form" method="POST" action="{{ $postUrl }}" onsubmit="return false">
             @csrf
             <div>
                 <button
+                    id="submit-button"
                     class="flex items-center justify-center border border-transparent bg-primary px-10 py-3 font-title font-bold uppercase transition-colors duration-300 hover:bg-primary-highlight focus:outline-0 focus:ring-1 focus:ring-alternate disabled:bg-gray-500"
                     type="submit"
                 >Submit</button>
