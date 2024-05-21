@@ -23,11 +23,19 @@ class InvoiceController extends Controller
     }
 
     public function showApprovedInvoices() {
-        return $this->showInvoicesByStatus(InvoiceStatus::Approved, 'Approved Invoices');
+        return $this->showInvoicesByStatus(
+            InvoiceStatus::Approved, 
+            'Approved Invoices',
+            route('show.approved.invoices')
+        );
     }
 
     public function showOpenInvoices() {
-        return $this->showInvoicesByStatus(InvoiceStatus::Open, 'Open Invoices');
+        return $this->showInvoicesByStatus(
+            InvoiceStatus::Open, 
+            'Open Invoices',
+            route('show.open.invoices')
+        );
     }
 
     public function setInvoicesStatus(Request $request, InvoiceStatus $newStatus) {
@@ -44,10 +52,10 @@ class InvoiceController extends Controller
         Invoice::whereIn('id', $ids)
             ->update(['status' => $newStatus]);
 
-        return redirect()->back();
+        return redirect($request->url());
     }
 
-    public function showInvoicesByStatus(InvoiceStatus $status, string $heading) {
+    public function showInvoicesByStatus(InvoiceStatus $status, string $heading, string $postUrl) {
         $invoices = Invoice::where('status', $status)
             ->orderBy('vendor_id')
             ->orderBy('date_due', 'asc')
@@ -55,7 +63,8 @@ class InvoiceController extends Controller
 
         return view('invoices.list', [
             'heading' => $heading,
-            'invoices' => $invoices, 
+            'invoices' => $invoices,
+            'postUrl' => $postUrl,
         ]);
     }
 }

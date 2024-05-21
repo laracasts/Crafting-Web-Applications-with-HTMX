@@ -8,7 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/invoices', [InvoiceController::class, 'index']);
-Route::get('/invoices/open', [InvoiceController::class, 'showOpenInvoices']);
+Route::get('/invoices/open', [InvoiceController::class, 'showOpenInvoices'])->name('show.open.invoices');
 Route::post('/invoices/open', [InvoiceController::class, 'approveOpenInvoices']);
-Route::get('/invoices/approved', [InvoiceController::class, 'showApprovedInvoices']);
+Route::get('/invoices/approved', [InvoiceController::class, 'showApprovedInvoices'])->name('show.approved.invoices');
 Route::post('/invoices/approved', [InvoiceController::class, 'payApprovedInvoices']);
