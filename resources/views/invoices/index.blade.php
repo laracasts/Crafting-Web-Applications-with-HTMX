@@ -1,6 +1,7 @@
 <x-layout>
     <x-section id="snapshots">
-        <div class="flex items-start gap-3">
+        @fragment('snapshots')
+        <div id="snapshots-container" class="flex items-start gap-3" hx-swap-oob="true">
             <x-snapshot>
                 <h2 class="font-title font-semibold uppercase pb-3">
                     <a 
@@ -34,6 +35,7 @@
                 </p>
             </x-snapshot>
         </div>
+        @endfragment
     </x-section>
     <div id="invoice-list"></div>
 </x-layout>

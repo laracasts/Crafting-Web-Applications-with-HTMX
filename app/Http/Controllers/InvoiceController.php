@@ -56,15 +56,26 @@ class InvoiceController extends Controller
     }
 
     public function showInvoicesByStatus(InvoiceStatus $status, string $heading, string $postUrl) {
+        $isHtmxRequest = request()->hasHeader('HX-Request');
+        $routeUrl = route('invoices.index');
+        $snapshots = '';
+
+        if (request()->header('HX-Current-URL') == $routeUrl) {
+            $snapshots = $this->index()->fragment('snapshots');
+        }
+        
+        
         $invoices = Invoice::where('status', $status)
             ->orderBy('vendor_id')
             ->orderBy('date_due', 'asc')
             ->get();
 
-        return view('invoices.list', [
+        $mainContent = view('invoices.list', [
             'heading' => $heading,
             'invoices' => $invoices,
             'postUrl' => $postUrl,
-        ])->fragmentIf(request()->hasHeader('HX-Request'), 'invoice-list');
+        ])->fragmentIf($isHtmxRequest, 'invoice-list');
+
+        return response($mainContent . $snapshots);
     }
 }
