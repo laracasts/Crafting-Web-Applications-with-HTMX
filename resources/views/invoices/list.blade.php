@@ -6,15 +6,18 @@
         hx-trigger="click from:button#submit-button"
         hx-target="#invoice-list"
         hx-swap="outerHTML"
+        x-data="invoiceList"
     >
         <form id="invoice-form" method="POST" action="{{ $postUrl }}" onsubmit="return false">
             @csrf
-            <div>
+            <div class="flex justify-between items-center">
                 <button
                     id="submit-button"
                     class="flex items-center justify-center border border-transparent bg-primary px-10 py-3 font-title font-bold uppercase transition-colors duration-300 hover:bg-primary-highlight focus:outline-0 focus:ring-1 focus:ring-alternate disabled:bg-gray-500"
                     type="submit"
+                    x-bind:disabled="count == 0"
                 >Submit</button>
+                <span class="inline-block" x-text="formatTotal"></span>
             </div>
             <div class="bg-gray-800 p-3 mt-4 mb-4 px-4 py-4">
                 <table class="w-full">
@@ -40,9 +43,16 @@
                     </thead>
                     <tbody class="divide-y divide-white/10 even:*:bg-black/5">
                         @foreach ($invoices as $invoice)
-                        <tr class="text-left py-3 px-4 *:py-3 *:px-2 has-[td]:hover:bg-gray-700 duration-300">
+                        <tr 
+                            x-data="{selected: false}"
+                            x-init="$watch('selected', value => change(value, {{ $invoice->amount_due }}) )"
+                            class="text-left py-3 px-4 *:py-3 *:px-2 has-[td]:hover:bg-gray-700 duration-300">
                             <td>
-                                <input type="checkbox" name="invoice:{{ $invoice->id }}">
+                                <input 
+                                    type="checkbox" 
+                                    name="invoice:{{ $invoice->id }}"
+                                    x-model="selected"
+                                >
                             </td>
                             <td>
                                 {{ $invoice->vendor->name }}
