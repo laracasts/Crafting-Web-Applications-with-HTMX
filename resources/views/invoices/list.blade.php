@@ -1,4 +1,5 @@
 <x-layout>
+    <x-snapshots></x-snapshots>
     @fragment('invoice-list')
     <x-section id="invoice-list" :$heading 
         hx-post="{{ $postUrl }}"

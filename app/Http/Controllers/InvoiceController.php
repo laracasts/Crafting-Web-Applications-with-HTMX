@@ -70,12 +70,12 @@ class InvoiceController extends Controller
         }
         
         return (new HtmxResponse())
-            ->addFragment('invoices.list', 'invoice-list', $model)
-            ->addFragment(
-                'invoices.index', 
-                'snapshots', 
-                [], 
-                HtmxHelper::isCurrentUrl(route('invoices.index'))
-            );
+            ->addFragments('invoices.list', ['invoice-list', 'snapshots'], $model);
+            // ->addFragment(
+            //     'invoices.index', 
+            //     'snapshots', 
+            //     [], 
+            //     HtmxHelper::isCurrentUrl(route('invoices.index'))
+            // );
     }
 }

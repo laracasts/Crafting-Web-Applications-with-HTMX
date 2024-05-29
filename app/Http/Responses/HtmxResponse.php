@@ -16,6 +16,14 @@ class HtmxResponse extends Response {
         return $this;
     }
 
+    public function addFragments(string $view, array $fragments, array $model = [], bool $include = true) {
+        if ($include) {
+            $this->fragments[] = view($view, $model)->fragments($fragments);
+        }
+
+        return $this;
+    }
+
     public function prepare(Request $request): static
     {
         $this->setContent(implode('', $this->fragments));
