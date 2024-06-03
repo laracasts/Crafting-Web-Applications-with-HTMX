@@ -17,6 +17,7 @@
         </header>
         <main>
             <div>
+                <div id="change-content"></div>
                 <div class="mt-16">
                     {{ $slot }}
                 </div>

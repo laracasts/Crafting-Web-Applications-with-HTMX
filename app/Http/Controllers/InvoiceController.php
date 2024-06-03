@@ -70,7 +70,12 @@ class InvoiceController extends Controller
         }
         
         return (new HtmxResponse())
-            ->addFragments('invoices.list', ['invoice-list', 'snapshots'], $model);
+            ->addFragments('invoices.list', ['invoice-list', 'snapshots'], $model)
+            ->addTrigger('somethingSpecial')
+            ->addTrigger('somethingElse', [
+                'message' => 'Something else happened',
+                'id' => 1
+            ]);
             // ->addFragment(
             //     'invoices.index', 
             //     'snapshots', 

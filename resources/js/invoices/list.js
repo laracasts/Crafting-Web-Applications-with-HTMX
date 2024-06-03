@@ -18,4 +18,12 @@ Alpine.data('invoiceList', () => ({
     get formatTotal() {
         return usd.format(this.total);
     }
-}))
+}));
+
+document.addEventListener('somethingSpecial', (e) => {
+    alert('We received something special');
+});
+
+document.addEventListener('somethingElse', (e) => {
+    document.getElementById('change-content').innerHTML = e.detail.message;
+});
